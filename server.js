@@ -33,6 +33,5 @@ app.get("/signin", function(req, res){
 });
 
 
-// setup  the listener
 app.listen(HTTP_PORT, onHttpStartup);
 

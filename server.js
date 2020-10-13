@@ -34,6 +34,10 @@ app.get("/rooms", function(req, res){
 app.get("/details", function(req, res){
     res.sendFile(path.join(__dirname, "/views/detailsPage.html"));
 });
+app.get("/signin", function(req, res){
+    res.sendFile(path.join(__dirname, "/views/signin.html"));
+});
+
 
 // setup  the listener
 app.listen(HTTP_PORT, onHttpStartup);

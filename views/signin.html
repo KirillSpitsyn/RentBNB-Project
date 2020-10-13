@@ -10,7 +10,7 @@
   <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
       <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
       <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>
-  <title>Registration</title>
+  <title>Login</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 </head>
 <body>
@@ -18,7 +18,7 @@
         <!--header-->
         <img src="../images/logo1.jpg" width="150px" height="150px">
         <div class="headertext">
-          <h1>Welcome to Canada Rentals</h1>
+          <h1>Login Page</h1>
           </div>
     </div>
         <div class="container-fluid">
@@ -26,21 +26,14 @@
         </div>
         <form action="action_page.php">
             <div class="register">
-              <h1>Register</h1>
-              <p>Fill in this form to create an account on our website</p>
+              <h1>Login</h1>
+              <p>Fill in this form to Login</p>
               <hr>
-              <label for="firstname"><b>First Name</b></label><br>
-              <input type="text" placeholder="Enter First Name" name="firstname" id="firstname" required><br>
-              <label for="lastname"><b>Last Name</b></label><br>
-              <input type="text" placeholder="Enter Last Name" name="lastname" id="lastname" required><br>
               <label for="email"><b>Email</b></label><br>
               <input type="text" placeholder="Enter Email" name="email" id="email" required><br>
               <label for="psw"><b>Password</b></label><br>
               <input type="password" placeholder="Enter Password" name="psw" id="psw" required><br>
-              <label for="psw-repeat"><b>Repeat Password</b></label><br>
-              <input type="password" placeholder="Repeat Password" name="psw-repeat" id="psw-repeat" required><br>
-              <hr>
-              <button type="submit" class="registerbtn" onclick="Function()">Register</button>
+              <button type="submit" class="registerbtn" onclick="Function()">Login</button>
             </div>
             <script>
                 function Function() {
@@ -48,9 +41,6 @@
                 }
                 </script>
           
-            <div class="container signin">
-              <p>Already have an account? <a href="/signin">Sign in</a>.</p>
-            </div>
           </form>
           
       <footer class="footerHome">

@@ -9,12 +9,6 @@ function onHttpStartup () {
 }
 app.use(express.static("public"));
 
-// create a route that indicates what we do when the person navigates to the root folder
-/* 
-app.get("/", function(req, res){
-    res.send("Hello World<br/><a href='/about'>Go to the about page</a>");
-});
-*/
 app.get("/", function(req, res){
     res.sendFile(path.join(__dirname, "/views/index.html"));
 });

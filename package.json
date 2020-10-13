@@ -4,6 +4,7 @@
   "description": "First assignment",
   "main": "script.js",
   "scripts": {
+    "start": "node server.js"
   },
   "author": "Kirill Spitsyn",
   "license": "MIT",

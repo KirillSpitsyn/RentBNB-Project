@@ -1,0 +1,188 @@
+.header {
+    background-image:  url("images/mainBackgroundHeader.jpg");
+    min-width: 300px;
+    height: 500px;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    position: relative;
+  }
+  .headertext {
+    font-family: serif;
+    text-align: center;
+    font-size: 120%;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color:white;
+  }
+  .button{
+    background-color: #BC986A;
+  }
+  .footer {
+    height:80px;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    padding-top: 20px;
+    background-color:#BC986A;
+    position: relative;
+  }
+  .footerLogo{
+  float: right;
+  width: 40px;
+  height: 40px;
+  vertical-align: middle;
+  }
+  .headerListings{
+    background-color:#BC986A;
+    background-size: cover;
+    position: relative;
+    min-height: 150px;
+    float: top;
+  }
+  .logoLisitngs{
+    padding: 15px;
+  }
+  .cards{
+    margin: 0 auto;
+    max-width: 1250px;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px,1fr)); 
+    gap: 25px;
+  }
+  .card{
+    box-shadow: 0 0 3px rgba(22, 18, 18, 0.5);
+    background: #FBFBFB;
+    height:267px;
+    width:400px;
+  }
+  .card_image{
+    width: 100%;
+    display: block;
+    height:170px;
+  }
+  .card_content{
+    line-height: 1.5;
+    font-size: 1.1em;
+    padding: 3px;
+    font-family: "Times New Roman", Times, serif;
+  }
+  h5.first{
+    font-family: serif;
+    margin-bottom:5px;
+  text-align: center;
+  color:purple;
+  }
+  h4.second{
+    margin-bottom:5px;
+    text-align: center;
+    color:#4F8A8B;
+    font-size:135%;
+  }
+  p.third{
+      text-align: center;
+      font-size:85%;
+      font-family: sans-serif;
+  }
+  .headerRooms{
+    background-color:#DAAD86;
+    background-size: cover;
+    position: relative;
+    min-height: 150px;
+    float: top;
+  }
+  .logoRooms{
+    padding: 15px;
+  }
+  #carousel{
+    width:800px;
+  margin:auto;
+  }
+  .carousel-item{
+    height: 600px;
+    margin:auto;
+} 
+.carousel-item img{
+    height: 600px;
+    margin:auto;
+}
+.content{
+  text-align: center;
+}
+.carousel-inner img {
+  margin: auto;
+}
+#carousel1{
+  width:800px;
+margin:auto;
+}
+#carousel2{
+  width:800px;
+margin:auto;
+}
+#carousel3{
+  width:800px;
+margin:auto;
+}
+.Amenities{
+  text-align: center;
+ align-content: center;
+
+}
+.About{
+  text-align: center;
+  background-color:#DAAD86;
+}
+.footerListing{
+  height:80px;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    padding-top: 20px;
+    background-color:#BC986A;
+    position: fixed;
+}
+#buttn{
+  vertical-align: top;
+  align-content: left;
+  font-size: 150%;
+  color: #4F8A8B;
+  background-color: #fbd46d;
+  border-color: #4F8A8B;
+  border-style: double;
+}
+.container-fluid{
+  background-color: lightgrey;
+}
+.footerHome{
+  height:80px;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    padding-top: 20px;
+    background-color:#BC986A;
+position: relative;
+}
+#carousel4{
+  width:800px;
+margin:auto;
+}
+.banner{
+  background: url(images/banner.jpg) no-repeat;
+  min-width: 300px;
+  height: 500px;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  position: relative;
+}
+.register{
+  text-align: center;
+  align-content: center;
+}
+.upload{
+  text-align: center;
+  align-content: center;
+}

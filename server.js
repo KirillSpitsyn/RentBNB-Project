@@ -47,7 +47,7 @@ DATA_OUTPUT="<h1>Your have successfully registered!</h1> <br/><br/>" +
 });
 
 app.get("/", function(req,res){
-    res.render('index',{layout: false});
+    res.render('index.html',{layout: false});
 });
 
 app.get("/register", function(req,res){ 

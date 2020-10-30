@@ -47,24 +47,24 @@ DATA_OUTPUT="<h1>Your have successfully registered!</h1> <br/><br/>" +
 });
 
 app.get("/", function(req,res){
-    res.render('index.html',{layout: false});
+    res.render('index.hbs',{layout: false});
 });
 
 app.get("/register", function(req,res){ 
-    res.render('register',{layout: false});
+    res.render('register.hbs',{layout: false});
 });
 
 app.get("/upload", function(req,res){ 
-    res.render('uploadPage',{layout: false});
+    res.render('uploadPage.hbs',{layout: false});
 });
 app.get("/rooms", function(req,res){ 
-    res.render('roomListings',{layout: false});
+    res.render('roomListings.hbs',{layout: false});
 });
 app.get("/details", function(req,res){ 
-    res.render('detailsPage',{layout: false});
+    res.render('detailsPage.hbs',{layout: false});
 });
 app.get("/signin", function(req,res){ 
-    res.render('signin',{layout: false});
+    res.render('signin.hbs',{layout: false});
 });
 
 

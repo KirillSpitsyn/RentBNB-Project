@@ -1,14 +1,15 @@
 var express = require("express");
 var app = express();
 var path = require("path");
-
+const hbs = require('express-handlebars');
 var nodemailer = require('nodemailer');
 const bodyParser = require('body-parser')
 app.use(bodyParser.urlencoded({extended: true}))
 
 var HTTP_PORT = process.env.PORT || 8080;
 
-
+app.engine('.hbs', hbs({extname: '.hbs'}));
+app.set('view engine', '.hbs');
 
 var transporter = nodemailer.createTransport({
     service: 'gmail',
@@ -21,7 +22,7 @@ function onHttpStart() {
     console.log("Express http server listening on: " + HTTP_PORT);
 }
 app.get("/dashboard", function(req,res){
-    res.sendFile(path.join(__dirname, "/views/dashboard.html"));
+    res.render('dashboard',{layout: false});
 });
 app.post("/dashboard", function(req,res){
     const FORM_DATA = req.body;
@@ -46,27 +47,30 @@ DATA_OUTPUT="<h1>Your have successfully registered!</h1> <br/><br/>" +
 });
 
 app.get("/", function(req,res){
-    res.sendFile(path.join(__dirname, "/views/index.html"));
+    res.render('index',{layout: false});
 });
 
 app.get("/register", function(req,res){ 
-    res.sendFile(path.join(__dirname, "/views/register.html"));
+    res.render('register.hbs',{layout: false});
 });
+
 app.get("/upload", function(req,res){ 
-    res.sendFile(path.join(__dirname, "/views/uploadPage.html"));
+    res.render('uploadPage.hbs',{layout: false});
 });
 app.get("/rooms", function(req,res){ 
-    res.sendFile(path.join(__dirname, "/views/roomListings.html"));
+    res.render('roomListings.hbs',{layout: false});
 });
 app.get("/details", function(req,res){ 
-    res.sendFile(path.join(__dirname, "/views/detailsPage.html"));
+    res.render('detailsPage.hbs',{layout: false});
 });
 app.get("/signin", function(req,res){ 
-    res.sendFile(path.join(__dirname, "/views/signin.html"));
+    res.render('signin',{layout: false});
 });
 
 
 app.use(express.static('views'));
 app.use(express.static("public"));
+
+
 
 app.listen(HTTP_PORT, onHttpStart);

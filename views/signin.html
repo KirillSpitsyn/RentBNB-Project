@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8" />
+  <link rel="stylesheet" href="style.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+      <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
+      <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>
+  <title>Login</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+<body>
+    <div class="header">
+        <!--header-->
+        <img src="../images/logo1.jpg" width="150px" height="150px">
+        <div class="headertext">
+          <h1>Login Page</h1>
+          </div>
+    </div>
+        <div class="container-fluid">
+            <a id="buttn" href="/">Home</a>
+        </div>
+        <form  name="Login" method="POST" onsubmit="return validateForm()">
+            <div class="register">
+              <h1>Login</h1>
+              <p>Fill in this form to Login</p>
+              <hr>
+              <label for="email"><b>Email</b></label><br>
+              <input type="text" placeholder="Enter Email" name="email" id="email" value=""><br>
+              <span class="error"><p id="email_error"></p></span>
+              <label for="psw"><b>Password</b></label><br>
+              <input type="password" placeholder="Enter Password" name="psw" id="psw" value=""><br>
+             <span class="error"><p id="password_error"></p></span>
+              <hr>
+              <button type="submit" class="registerbtn">Login</button>
+              <br><br>
+            </div>
+            <script>
+                function validateForm() {
+    var error = 0;
+    var eml = document.forms["Login"]["email"].value;
+    document.getElementById('email_error').innerHTML = '';
+    if (eml == null || eml == "") {
+        error++;
+        document.getElementById('email_error').innerHTML = 'Email must be filled out';
+    }
+    var pass = document.forms["Login"]["psw"].value;
+    document.getElementById('password_error').innerHTML = '';
+    if (pass == null || pass == "") {
+        error++;
+        document.getElementById('password_error').innerHTML = 'Password must be filled out';
+    }
+    if(error>0) {
+        return false;
+    }
+    else{
+    return true;
+    }
+}
+                </script>
+          
+          </form>
+          
+      <footer class="footerHome">
+      <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12"></div>
+      <div class="sociallinks">
+        <a href="#" class="fa fa-facebook fa-2x"></a>
+        <a href="#" class="fa fa-twitter fa-2x"></a>
+        <a href="#" class="fa fa-instagram fa-2x"></a>
+        <img src="../images/logo2.jpg" class="footerLogo">
+      </div>
+  </footer>
+</body>
+</html>

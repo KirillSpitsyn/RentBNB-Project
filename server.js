@@ -28,7 +28,6 @@ app.post("/dashboard", function(req,res){
     const FORM_DATA = req.body;
 DATA_OUTPUT="<h1>Your have successfully registered!</h1> <br/><br/>" +
        "<h3">Welcome <strong> + FORM_DATA.firstname + " " + FORM_DATA.lastname + "</strong> to the Canada Rentals.</h3>";
-        res.render('dashboard',{layout: false});
     res.send(DATA_OUTPUT);
     var emailOptions = {
         from: 'zima197211@gmail.com',

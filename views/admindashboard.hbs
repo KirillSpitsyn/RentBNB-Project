@@ -34,29 +34,21 @@
             <div class="upload">
               <h1>Upload Page</h1>
               <p>Fill in this form to create a Page</p>
-              <hr>
-              <label for="property"><b>Type of Property</b></label><br>
-              <input type="text" placeholder="Enter Type of Property" name="property" id="property" required><br>
-              <label for="pricepernight"><b>Price per Night</b></label><br>
-              <input type="text" placeholder="Enter Price per Night" name="pricepernight" id="pricepernight" required><br>
-              <label for="description"><b>Description</b></label><br>
-              <input type="text" placeholder="Enter Short Description" name="description" id="description" required><br>
-              <label for="img"><b>Select image:</b></label><br>
-              <input type="file" id="img" name="img" accept="image/*"><br>
-              <input type="submit"><br>
-              <label for="email"><b>Email</b></label><br>
-              <input type="email" placeholder="Enter your Email" name="email" id="email" required><br>
-              <label for="password"><b>Password</b></label><br>
-              <input type="password" placeholder="Enter your Password" name="password" id="passowrd" required><br>
-              <hr>
-              <button type="submit" class="upload" onclick="Function()">Upload</button>
-            </div>
-            <script>
-                function Function() {
-                  alert("Thank You!");
-                }
-                </script>
-          </form>
+              <p>Register a new user:</p>
+    <div style="text-align:right;width:400px;border:1px dashed #6495de;padding:16px;">
+      <form>
+        <label for="title">Title</label>
+        <input id="title" type="text" name="title"/><br />
+        <label for="price">Price</label>
+        <input id="price" type="text" name="price"/><br />
+        <label for="description">Description</label>
+        <input id="description" type="text" name="description"/><br />
+        <label for="location">Location</label>
+        <input id="location" type="text" name="location"/><br />
+        <label for="photo">Photo of the room</label>
+        <input id="photo" type="file" name="photo"/><br />
+        <input type="submit" value="Submit File" />
+      </form>
           <br>
       <footer class="footerHome">
       <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12"></div>

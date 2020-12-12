@@ -2,6 +2,7 @@ var express = require("express");
 var app = express();
 var path = require("path");
 const bcrypt=require('bcryptjs');
+const multer = require("multer");
 const hbs = require('express-handlebars');
 const mongoose = require('mongoose');
 var sessions = require("client-sessions");

@@ -37,16 +37,31 @@ const userSchema = new mongoose.Schema({
     },
     "firstname": String,
     "lastname": String,
-    "password":  String,
-    "admin": Boolean
+    "password":  String
   });
   const User = mongoose.model("users", userSchema);
-
+  const adminSchema = new mongoose.Schema({
+    "email":  {
+      "type": String,
+      "unique": true
+    },
+    "firstname": String,
+    "lastname": String,
+    "password":  String,
+    "isAdmin":{ 
+      "type":Boolean,
+      "default": true
+    }
+  });
+  const Admin = mongoose.model("admins", adminSchema);
 function onHttpStart() {
     console.log("Express http server listening on: " + HTTP_PORT);
 }
 app.get("/dashboard", function(req,res){
     res.render('dashboard',{layout: false});
+});
+app.get("/admindashboard", function(req,res){
+  res.render('admindashboard',{layout: false});
 });
 app.post("/dashboard", function(req,res){
     bcrypt.hash(req.body.password, 10).then(hashedpass=>{
@@ -67,11 +82,34 @@ app.post("/dashboard", function(req,res){
         })
     })
 });
+app.post("/admindashboard", function(req,res){
+  bcrypt.hash(req.body.password, 10).then(hashedpass=>{
+      const newAdmin=new Admin({
+          email:req.body.email,
+          password:hashedpass,
+          firstname:req.body.firstname,
+          lastname:req.body.lastname,
+          isAdmin:true
+      })
+      newAdmin.save().then(function(){
+          req.session.admin={
+           email:req.body.email,
+           firstname:req.body.firstname,
+          lastname:req.body.lastname,
+          isAdmin:true
+          }
+
+        res.render('admindashboard', {admin:req.session.admin});
+      })
+  })
+});
 
 app.get("/", function(req,res){
     res.render('index',{layout: false});
 });
-
+app.get("/adminreg", function(req,res){
+  res.render('adminreg',{layout: false});
+});
 app.get("/register", function(req,res){ 
     res.render('register.hbs',{layout: false});
 });
@@ -87,6 +125,10 @@ app.get("/details", function(req,res){
 });
 app.get("/signin", function(req,res){ 
     res.render('signin',{layout: false});
+});
+app.get("/logout", function(req,res){ 
+  req.session.reset();
+  res.redirect("/signin");
 });
 app.post("/signin", function(req,res){ 
   User.findOne({email:req.body.email})
@@ -117,6 +159,39 @@ app.post("/signin", function(req,res){
         .catch(err=>console.log(`Error ${err}`));
      }
   });
+});
+app.get("/signinadmin", function(req,res){ 
+  res.render('signinadmin',{layout: false});
+});
+app.post("/signinadmin", function(req,res){ 
+Admin.findOne({email:req.body.email})
+.exec().then((admin)=>{
+   let errors ="";
+   if(admin == null){
+      errors="Sorry, your email and/or password is incorrect";
+      res.render("signinadmin",{
+         errors:errors
+      })
+   } else {
+      bcrypt.compare(req.body.password, admin.password)
+      .then(isMatched=>{
+         if(isMatched){
+            req.session.admin={
+              email:admin.email,
+              firstname:admin.firstname,
+              lastname:admin.lastname
+            }
+            res.render("admindashboard",  {admin:req.session.admin});
+         } else {
+            errors="Sorry, your email and/or password is incorrect";
+            res.render("signinadmin", {
+               errors:errors
+            });
+         }
+      })
+      .catch(err=>console.log(`Error ${err}`));
+   }
+});
 });
 
 

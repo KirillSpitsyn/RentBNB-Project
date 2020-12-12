@@ -10,7 +10,7 @@
   <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
       <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
       <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>
-  <title>Upload your Page</title>
+  <title>Admin Dashboard page</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 </head>
 <body>
@@ -23,7 +23,13 @@
     </div>
         <div class="container-fluid">
             <a id="buttn" href="/">Home</a>
+              <a id="buttn" href="/logout">Logout</a>
         </div>
+ <div class="dashUser">
+        <h1> ADMIN DASHBOARD</h1>
+  <h3 >Hello {{{admin.firstname}}} {{{admin.lastname}}} </h3>
+  <p>Welcome to your dashboard page</p>
+  </div>
         <form action="action_page.php">
             <div class="upload">
               <h1>Upload Page</h1>

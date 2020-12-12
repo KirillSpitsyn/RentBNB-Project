@@ -32,9 +32,9 @@
               <label for="email"><b>Email</b></label><br>
               <input type="text" placeholder="Enter Email" name="email" id="email" value=""><br>
               <span class="error"><p id="email_error"></p></span>
-              <label for="psw"><b>Password</b></label><br>
-              <input type="password" placeholder="Enter Password" name="psw" id="psw" value=""><br>
-             <span class="error"><p id="password_error"></p></span>
+              <label for="password"><b>Password</b></label><br>
+              <input type="password" placeholder="Enter Password" name="password" id="password" value=""><br>
+             <span class="error"><p id="password_error" > {{errors}}</p></span>
               <hr>
               <button type="submit" class="registerbtn">Login</button>
               <br><br>
@@ -48,7 +48,7 @@
         error++;
         document.getElementById('email_error').innerHTML = 'Email must be filled out';
     }
-    var pass = document.forms["Login"]["psw"].value;
+    var pass = document.forms["Login"]["password"].value;
     document.getElementById('password_error').innerHTML = '';
     if (pass == null || pass == "") {
         error++;

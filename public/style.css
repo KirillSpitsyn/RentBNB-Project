@@ -193,6 +193,7 @@ margin:auto;
   height:80px;
     left: 0;
     bottom: 0;
+    position: absolute;
     width: 100%;
     padding-top: 20px;
     background-color:#BC986A;
@@ -219,4 +220,7 @@ position: relative;
 .error{
   color:red;
   font: serif;
+}
+.dashUser{
+  text-align: center;
 }

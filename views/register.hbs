@@ -29,6 +29,7 @@
               <h1>Register</h1>
               <p>Fill in this form to create an account on our website</p>
               <hr>
+              <label class="fixedlabel">Is Administrator:</label><input type="checkbox" name="admin" checked="{{user.admin}}"/><br/>
               <label for="firstname"><b>First Name</b></label><br>
               <input type="text" placeholder="Enter First Name" name="firstname" id="firstname" value=""><br>
                <span class="error"><p id="firstName_error"></p></span>
@@ -38,8 +39,8 @@
               <label for="email"><b>Email</b></label><br>
               <input type="text" placeholder="Enter Email" name="email" id="email" value=""><br>
                <span class="error"><p id="email_error"></p></span>
-              <label for="psw"><b>Password</b></label><br>
-              <input type="password" placeholder="Enter Password" name="psw" id="psw" value=""><br>
+              <label for="password"><b>Password</b></label><br>
+              <input type="password" placeholder="Enter Password" name="password" id="psw" value=""><br>
                <span class="error"><p id="password_error"></p></span>
               <label for="psw-repeat"><b>Repeat Password</b></label><br>
               <input type="password" placeholder="Repeat Password" name="psw-repeat" id="psw-repeat" value=""><br>

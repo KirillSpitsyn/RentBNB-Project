@@ -30,6 +30,16 @@ mongoose.connect(connectionString, { useNewUrlParser: true, useUnifiedTopology: 
 mongoose.connection.on("open", () => {
   console.log("Database connection open.");
 });
+
+
+const roomSchema = new Schema({
+  "title": String,
+  "price": Number,
+  "description": String,
+  "location": String,
+  "photo": String
+});
+const Room=mongoose.model("rooms", roomSchema);
 const userSchema = new mongoose.Schema({
     "email":  {
       "type": String,
@@ -57,11 +67,19 @@ const userSchema = new mongoose.Schema({
 function onHttpStart() {
     console.log("Express http server listening on: " + HTTP_PORT);
 }
+const storage = multer.diskStorage({
+  destination: "./public/images/",
+  filename: function(req, file, cb){
+    cb(null, Date.now() + file.originalname);
+  }
+});
+const upload=multer({storage:storage});
 app.get("/dashboard", function(req,res){
     res.render('dashboard',{layout: false});
 });
 app.get("/admindashboard", function(req,res){
-  res.render('admindashboard',{layout: false});
+  res.render('admindashboard',{layout: false, user: req.session.user,
+    data: Room.find({location : req.body.location}).lean(),});
 });
 app.post("/dashboard", function(req,res){
     bcrypt.hash(req.body.password, 10).then(hashedpass=>{
@@ -98,12 +116,22 @@ app.post("/admindashboard", function(req,res){
           lastname:req.body.lastname,
           isAdmin:true
           }
-
         res.render('admindashboard', {admin:req.session.admin});
       })
   })
 });
-
+app.post("/addroom", upload.single("photo"),function(req,res){
+  var createRoom = new Room({
+    title: req.body.title,
+    price: req.body.price,
+    description: req.body.description,
+    location: req.body.location,
+    photo: req.file.filename
+  });
+  createRoom.save().then(()=>{
+    res.redirect('/rooms');
+  });
+});
 app.get("/", function(req,res){
     res.render('index',{layout: false});
 });
@@ -114,11 +142,15 @@ app.get("/register", function(req,res){
     res.render('register.hbs',{layout: false});
 });
 
-app.get("/upload", function(req,res){ 
-    res.render('uploadPage.hbs',{layout: false});
-});
 app.get("/rooms", function(req,res){ 
-    res.render('roomListings.hbs',{layout: false});
+  Room.find().exec().then(rooms=>{
+    const data=[];
+    rooms.forEach(room => {
+      data.push({title: room.title, price: room.price, description: room.description, location: room.location, photo: room.photo});
+});
+    res.render('roomListings', {user:req.session.user, data: data,
+      layout: false });
+  });
 });
 app.get("/details", function(req,res){ 
     res.render('detailsPage.hbs',{layout: false});
@@ -195,7 +227,6 @@ Admin.findOne({email:req.body.email})
 });
 
 
-app.use(express.static('views'));
 app.use(express.static("public"));
 
 

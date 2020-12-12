@@ -35,6 +35,19 @@
         </div>
         <br>
       <div class="cards">
+        {{#each data}}
+      <a href="details">
+          <div class="card" >
+            <img src="../images/{{photo}}" alt="{{title}}" class="card_image">
+            <div class="card_content">
+              <h5 class="first">{{title}} · {{location}} </h5>
+              <h6 class="second">{{description}}</h4>
+              <p class="third">${{price}} CAN/night</p>
+            </div>
+        </div>
+    </a>
+{{/each}}
+
         <!--class for cards-->
         <a href="details">
         <div class="Listing1">

@@ -30,16 +30,14 @@
   <h3 >Hello {{{admin.firstname}}} {{{admin.lastname}}} </h3>
   <p>Welcome to your dashboard page</p>
   </div>
-        <form action="action_page.php">
             <div class="upload">
-              <h1>Upload Page</h1>
-              <p>Fill in this form to create a Page</p>
-              <p>Register a new user:</p>
-      <form>
+              <h1>Upload Rooms</h1>
+              <p>Fill in this form to create a Room</p>
+      <form method="POST" action="/addroom" enctype="multipart/form-data">
         <label for="title">Title</label>
         <input id="title" type="text" name="title"/><br />
         <label for="price">Price</label>
-        <input id="price" type="text" name="price"/><br />
+        <input id="price" type="number" name="price"/><br />
         <label for="description">Description</label>
         <input id="description" type="text" name="description"/><br />
         <label for="location">Location</label>

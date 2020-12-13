@@ -30,23 +30,49 @@
   <h3 >Hello {{{admin.firstname}}} {{{admin.lastname}}} </h3>
   <p>Welcome to your dashboard page</p>
   </div>
-            <div class="upload">
-              <h1>Upload Rooms</h1>
-              <p>Fill in this form to create a Room</p>
-      <form method="POST" action="/addroom" enctype="multipart/form-data">
-        <label for="title">Title</label>
+  <div class="rooms">
+        <h1>Upload Rooms</h1>
+        <p>Fill in this form to create a Room</p>
+        <form method="POST" action="/addroom" enctype="multipart/form-data">
+        <label for="ID">ID</label><br />
+        <input id="ID" type="number" name="ID"/><br />
+        <label for="title">Title</label><br />
         <input id="title" type="text" name="title"/><br />
-        <label for="price">Price</label>
+        <label for="price">Price</label><br />
         <input id="price" type="number" name="price"/><br />
-        <label for="description">Description</label>
+        <label for="description">Description</label><br />
         <input id="description" type="text" name="description"/><br />
-        <label for="location">Location</label>
+        <label for="location">Location</label><br />
         <input id="location" type="text" name="location"/><br />
-        <label for="photo">Photo of the room</label>
+        <label for="photo">Photo of the room</label><br />
         <input id="photo" type="file" name="photo"/><br />
-        <input type="submit" value="Submit File" />
+        <input type="submit" value="Submit" />
       </form>
           <br>
+           <h3>Update Rooms</h3>
+        <p>Fill in this form to update a Room</p>
+
+        <form method="POST" action="/updateroom" enctype="multipart/form-data">
+        <label for="ID">Choose ID to update Room</label><br />
+        <input id="ID" type="number" name="ID"/><br />
+        <label for="title">Update room title</label><br />
+        <input id="title" type="text" name="title"/><br />
+        <label for="price">Update room Price</label><br />
+        <input id="price" type="number" name="price"/><br />
+        <label for="description">Update room Description</label><br />
+        <input id="description" type="text" name="description"/><br />
+        <label for="location">Update room Location</label><br />
+        <input id="location" type="text" name="location"/><br />
+        <label for="photo">Update room photo</label><br />
+        <input id="photo" type="file" name="photo"/><br />
+        <input type="submit" value="Submit" />
+      </form>
+         <h3>Delete Rooms</h3>
+         <form method="POST" action="/deleteroom">
+        <label for="ID">Choose ID to delete Room</label><br />
+        <input id="ID" type="number" name="ID"/><br />
+        <input type="submit" value="Submit" />
+      </div>
       <footer class="footerHome">
       <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12"></div>
       <div class="sociallinks">

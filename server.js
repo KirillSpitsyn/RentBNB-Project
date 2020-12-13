@@ -13,6 +13,7 @@ var Schema = mongoose.Schema;
 
 var HTTP_PORT = process.env.PORT || 8080;
 const config = require("./js/config");
+const { Server } = require("http");
 const connectionString = config.database_connection_string;
 
 app.engine('.hbs', hbs({extname: '.hbs',defaultLayout: false}));
@@ -33,6 +34,10 @@ mongoose.connection.on("open", () => {
 
 
 const roomSchema = new Schema({
+  "id":{
+    "type":Number,
+    "unique":true
+  },
   "title": String,
   "price": Number,
   "description": String,
@@ -69,8 +74,8 @@ function onHttpStart() {
 }
 const storage = multer.diskStorage({
   destination: "./public/images/",
-  filename: function(req, file, cb){
-    cb(null, Date.now() + file.originalname);
+  filename: function(req, file, fn){
+    fn(null, file.originalname);
   }
 });
 const upload=multer({storage:storage});
@@ -79,7 +84,7 @@ app.get("/dashboard", function(req,res){
 });
 app.get("/admindashboard", function(req,res){
   res.render('admindashboard',{layout: false, user: req.session.user,
-    data: Room.find({location : req.body.location}).lean(),});
+    data: Room.find({location : req.body.location}).lean()});
 });
 app.post("/dashboard", function(req,res){
     bcrypt.hash(req.body.password, 10).then(hashedpass=>{
@@ -122,6 +127,7 @@ app.post("/admindashboard", function(req,res){
 });
 app.post("/addroom", upload.single("photo"),function(req,res){
   var createRoom = new Room({
+    id:req.body.ID,
     title: req.body.title,
     price: req.body.price,
     description: req.body.description,
@@ -130,6 +136,28 @@ app.post("/addroom", upload.single("photo"),function(req,res){
   });
   createRoom.save().then(()=>{
     res.redirect('/rooms');
+    res.render('admindashboard')
+  });
+});
+app.post("/updateroom", upload.single("photo"), function(req, res) {
+  const rID = req.body.ID;
+  const rtitle = req.body.title;
+  const rprice = req.body.price;
+  const rdescription = req.body.description;
+  const rlocation = req.body.location;
+  const rphoto = req.body.photo;
+  Room.updateOne({id : rID}, {$set: {title : rtitle, price : rprice, description : rdescription, location : rlocation, photo : req.file.filename}})
+  .exec()
+  .then(() =>{
+    res.redirect('/rooms');
+  });
+});
+app.post("/deleteroom", function(req, res) {
+  const idnum = req.body.ID;
+  Room.deleteOne({id : idnum})
+  .exec()
+  .then(() => {
+    res.redirect('/roomlisting');
   });
 });
 app.get("/", function(req,res){
@@ -139,7 +167,7 @@ app.get("/adminreg", function(req,res){
   res.render('adminreg',{layout: false});
 });
 app.get("/register", function(req,res){ 
-    res.render('register.hbs',{layout: false});
+    res.render('register',{layout: false});
 });
 
 app.get("/rooms", function(req,res){ 
@@ -153,7 +181,7 @@ app.get("/rooms", function(req,res){
   });
 });
 app.get("/details", function(req,res){ 
-    res.render('detailsPage.hbs',{layout: false});
+    res.render('detailsPage',{layout: false});
 });
 app.get("/signin", function(req,res){ 
     res.render('signin',{layout: false});
@@ -229,56 +257,7 @@ Admin.findOne({email:req.body.email})
 
 app.use(express.static("public"));
 
-
-
 app.listen(HTTP_PORT, onHttpStart);
 
 
 
-/*
-TODO:
-1.login-bcrypt compare-find record in db
-2. logout-if(!req.session.user) in login to render login, else redirect logout
-3. add bool admin to schema and drop collection!!!!!!
-4. during registration, server side validation for email if exists or not using find as in login
-4th assignemnt: admin dashboard if(req.session.user.admin(bool) redirect admin dashboard, else dashboard)
-!doctype html>
-<html>
-  <head>
-    <style>
-      input {
-        margin: 4px;
-        width: 250px;
-      }
-    </style>
-  </head>
-  <body>
-    <h1>Week 5 example</h1>
-    <p>Register a new user:</p>
-    <div style="text-align:right;width:400px;border:1px dashed #6495de;padding:16px;">
-      <form>
-        <label for="name">Name</label>
-        <input id="name" type="text" name="name"/><br />
-        <label for="username">Username</label>
-        <input id="username" type="text" name="username"/><br />
-        <label for="email">Email</label>
-        <input id="email" type="email" name="email"/><br />
-        <label for="password">Password</label>
-        <input id="password" type="password" name="password"/><br />
-        <label for="photo">Photo ID</label>
-        <input id="photo" type="file" name="photo"/><br />
-        <input type="submit" value="Submit File" />
-      </form>
-    </div>
-  </body>
-</html>
-post-add room
-new schema for room ------------------------- assign id, autoincrement
-room model.save
-for room for photos name of file save in db 
-images in handlebar
-get/room find all records, assign to variable(array)=>pass to rooms.hbs
-#each
-for search findAll({location:req.body.location}) /rooms
-parameter /room/id=1                                            req.params.id
-*/

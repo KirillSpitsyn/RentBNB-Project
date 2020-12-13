@@ -36,108 +36,16 @@
         <br>
       <div class="cards">
         {{#each data}}
-      <a href="details">
+      <a href="details/{{id}}">
           <div class="card" >
             <img src="../images/{{photo}}" alt="{{title}}" class="card_image">
             <div class="card_content">
-              <h5 class="first">{{title}} · {{location}} </h5>
+              <h5 class="first">{{title}} · {{location}} ID {{id}}</h5>
               <h6 class="second">{{description}}</h4>
               <p class="third">${{price}} CAN/night</p>
             </div>
         </div>
     </a>
 {{/each}}
-
-        <!--class for cards-->
-        <a href="details">
-        <div class="Listing1">
-          <!--card-->
-          <div class="card" >
-            <img src="../images/condo1.jpg" alt="Picture of Condominium" class="card_image">
-            <div class="card_content">
-              <h5 class="first">Entire Condominium · Vancouver </h5>
-              <h6 class="second">Excellent Condo for a Family</h4>
-              <p class="third">$183 CAN/night</p>
-            </div>
-          </div>
-        </div>
-    </a>
-        <a href="details">
-        <div class="Listing2">
-            <!--card-->
-            <div class="card">
-              <img src="../images/room2.jpg" alt="Picture of Room" class="card_image">
-              <div class="card_content">
-                <h5 class="first">Room in Apartments · Edmonton </h5>
-                <h6 class="second">Good Room for a Student</h4>
-                <p class="third">$30 CAN/night</p>
-              </div>
-            </div>
-          </div>
-        </a>
-          <a href="details">
-          <div class="Listing3">
-            <!--card-->
-            <div class="card">
-              <img src="../images/room3.jpg" alt="Picture of Room" class="card_image">
-              <div class="card_content">
-                <h5 class="first">Room in Apartments · Toronto </h5>
-                <h6 class="second">Room in Downtown Toronto</h4>
-                <p class="third">$45 CAN/night</p>
-              </div>
-            </div>
-          </div>
-        </a>
-          <a href="detailsl">
-          <div class="Listing4">
-            <!--card-->
-            <div class="card">
-              <img src="../images/house4.jpg" alt="Picture of House" class="card_image">
-              <div class="card_content">
-                <h5 class="first">Entire House · Calgary </h5>
-                <h6 class="second">Big House for Parties</h4>
-                <p class="third">$215 CAN/night</p>
-              </div>
-            </div>
-          </div>
-        </a>
-          <a href="details">
-          <div class="Listing5">
-            <!--card-->
-            <div class="card">
-              <img src="../images/aparts5.jpg" alt="Picture of Apartments" class="card_image">
-              <div class="card_content">
-                <h5 class="first">Entire Apartments · Vancouver </h5>
-                <h6 class="second">Apartments for Long Stays</h4>
-                <p class="third">$167 CAN/night</p>
-              </div>
-            </div>
-          </div>
-        </a>
-          <a href="details">
-          <div class="Listing6">
-            <!--card-->
-            <div class="card">
-              <img src="../images/house6.jpg" alt="Picture of House" class="card_image">
-              <div class="card_content">
-                <h5 class="first">Entire House · Montreal </h5>
-                <h6 class="second">Excellent House for Big Families</h4>
-                <p class="third">$195 CAN/night</p>
-              </div>
-            </div>
-          </div>
-        </a>
-    </div>
-    <br>
-    <br>
-      <footer class="footer">
-      <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12"></div>
-      <div class="sociallinks">
-        <a href="#" class="fa fa-facebook fa-2x"></a>
-        <a href="#" class="fa fa-twitter fa-2x"></a>
-        <a href="#" class="fa fa-instagram fa-2x"></a>
-        <img src="../images/logo2.jpg" class="footerLogo">
-      </div>
-  </footer>
-</body>
-</html>
+      
+  

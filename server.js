@@ -157,7 +157,7 @@ app.post("/deleteroom", function(req, res) {
   Room.deleteOne({id : idnum})
   .exec()
   .then(() => {
-    res.redirect('/roomlisting');
+    res.redirect('/rooms');
   });
 });
 app.get("/", function(req,res){

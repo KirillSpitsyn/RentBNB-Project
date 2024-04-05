@@ -174,7 +174,7 @@ app.get("/rooms", function(req,res){
   Room.find().exec().then(rooms=>{
     const data=[];
     rooms.forEach(room => {
-      data.push({title: room.title, price: room.price, description: room.description, location: room.location, photo: room.photo});
+      data.push({id: room.ID, title: room.title, price: room.price, description: room.description, location: room.location, photo: room.photo});
 });
     res.render('roomListings', {user:req.session.user, data: data,
       layout: false });
